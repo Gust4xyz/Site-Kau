@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kauu</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+  /* Seu CSS já incluído aqui para facilitar */
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
+
+  :root {
+    --branco: white;
+    --cor-de-fundo: #00162E;
+    --fundo-senha: #00244D;
+    --fundo-texto: #001E40;
+    --borda: #0075FF;
+    --roboto: 'Roboto', sans-serif;
+    --roboto-mono: 'Roboto Mono', monospace;
+  }
+  * {
+    font-weight: 400;
+  }
+  body {
+    color: var(--branco);
+    background-color: var(--cor-de-fundo);
+    font-family: var(--roboto);
+  }
+  .titulo-principal {
+    font-family: var(--roboto-mono);
+    font-size: 32px;
+  }
+  .titulo-secundario {
+    font-size: 24px;
+  }
+  .conteudo-titulo {
+    text-align: center;
+    margin-top: 80px;
+  }
+  .conteudo-senha {
+    margin-top: 80px;
+    background: var(--fundo-senha);
+    padding: 24px;
+    border-bottom: 6px solid var(--borda);
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #campo-senha {
+    background-color: var(--fundo-senha);
+    border: none;
+    color: var(--branco);
+    font-family: var(--roboto-mono);
+    font-size: 40px;
+    width: 100%;
+  }
+  #campo-senha:focus {
+    outline: none;
+  }
+  .conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .parametro {
+    background-color: var(--fundo-texto);
+    border: 2px solid var(--borda);
+    margin-top: 32px;
+    padding: 24px;
+  }
+  .parametro-titulo {
+    font-family: var(--roboto-mono);
+    font-size: 28px;
+  }
+  .parametro-senha__titulo {
+    font-size: 24px;
+  }
+  .parametro-coluna__senha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .parametro-senha {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .parametro-senha-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .parametro-senha__botao {
+    background-color: var(--cor-de-fundo);
+    color: var(--branco);
+    border: 2px solid var(--borda);
+    padding: 24px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .parametro-senha__texto {
+    border-top: 2px solid var(--borda);
+    border-bottom: 2px solid var(--borda);
+    padding: 24px;
+    margin: 0px;
+    font-size: 24px;
+    width: 80px;
+    text-align: center;
+  }
+  /*barra azul de fundo*/
+  .barra {
+    background-color: var(--fundo-senha);
+    height: 30px;
+    width: 100%;
+    margin-top: 16px;
+  }
+  .forca {
+    height: 30px;
+    position: relative;
+    bottom: 30px;
+    transition: width 0.3s ease;
+  }
+  .fraca {
+    width: 25%;
+    background-color: #E71B32;
+  }
+  .media {
+    width: 50%;
+    background-color: #faf408;
+  }
+  .forte {
+    width: 100%;
+    background-color: #00ff85;
+  }
+  /*deixa a legenda fraca, média, forte em linha*/
+  .parametro-senha-textos {
+    display: flex;
+    justify-content: space-between;
+  }
+  /* Mensagem dinâmica resultado final */
+  .mensagem-final {
+    margin-top: 16px;
+    background-color: var(--fundo-senha);
+    border-left: 4px solid var(--borda);
+    padding: 16px;
+    font-size: 18px;
+    color: var(--branco);
+    font-family: var(--roboto);
+    max-width: 600px;
+    white-space: normal;
+  }
+
+  @media screen and (min-width: 768px) {
+    .parametro-coluna__senha {
+      flex-direction: row;
+    }
+  }
+</style>
+</head>
+<body>
+<section class="conteudo">
+  <div class="conteudo-titulo">
+    <h2 class="titulo-principal">Você acha que devemos ter algo a mais que uma amizade ?</h2>
+    <h3 class="titulo-secundario">Seja sincera !</h3>
+  </div>
+
+  <div class="conteudo-senha">
+    <label for="senha">Resposta</label>
+    <input name="senha" type="text" id="campo-senha" placeholder="Digite sim ou nao" autocomplete="off" />
+  </div>
+
+  <div class="parametro">
+    <h4 class="parametro-titulo">Teste de amizade</h4>
+
+    <div class="parametro-coluna__senha">
+      <div class="parametro-senha">
+        <h4 class="parametro-senha__titulo">Avaliação</h4>
+        <div class="parametro-senha-botoes">
+          <button class="parametro-senha__botao" onclick="alterarPontos(-1)">-</button>
+          <p class="parametro-senha__texto" id="pontos">0</p>
+          <button class="parametro-senha__botao" onclick="alterarPontos(1)">+</button>
+        </div>
+
+        <h4 class="parametro-senha__titulo" style="margin-top: 40px;">Força da amizade</h4>
+        <div class="barra"></div> <!-- Barra azul de fundo -->
+        <div class="forca"></div> <!-- Barra colorida que indica força -->
+
+        <div class="parametro-senha-textos"> <!-- Legendas abaixo das cores -->
+          <p>Fraca</p>
+          <p>Média</p>
+          <p>Forte</p>
+        </div>
+      </div>
+
+      <div class="parametro-senha" style="width: 50%; margin-left: 32px;">
+        <h4 class="parametro-senha__titulo">Resultado Final</h4>
+        <div id="mensagem-final" class="mensagem-final"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let pontos = 0;
+
+  function alterarPontos(valor) {
+    const novoValor = pontos + valor;
+    if (novoValor >= 0 && novoValor <= 10) {
+      pontos = novoValor;
+      document.getElementById('pontos').innerText = pontos;
+      atualizarBarraForca();
+    }
+  }
+
+  function atualizarBarraForca() {
+    const barra = document.querySelector('.forca');
+    barra.className = 'forca'; // Remove classes anteriores
+    
+    if (pontos <= 3) {
+      barra.classList.add('fraca');
+    } else if (pontos <= 7) {
+      barra.classList.add('media');
+    } else {
+      barra.classList.add('forte');
+    }
+  }
+
+  // Atualiza mensagem conforme resposta no input
+  document.getElementById('campo-senha').addEventListener('input', verificarResposta);
+
+  function verificarResposta() {
+    const resposta = document.getElementById('campo-senha').value.trim().toLowerCase();
+    const mensagemFinal = document.getElementById('mensagem-final');
+
+    if (resposta === 'sim') {
+      mensagemFinal.textContent = 'Saiba que dessa vez vai ser diferente, e eu te prometo!';
+    } else if (resposta === 'nao' || resposta === 'não') {
+      mensagemFinal.textContent = 'Compreendo e concordo contigo, vamos ter apenas amizade, porém, mais próximos :)';
+    } else if (resposta === '') {
+      mensagemFinal.textContent = ''; // limpa se vazio
+    } else {
+      mensagemFinal.textContent = 'Por favor, responda apenas com "sim" ou "nao"';
+    }
+  }
+</script>
+<div id="pedido-print" style="
+  background-color: var(--fundo-senha);
+  color: var(--branco);
+  border: 2px solid var(--borda);
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 600px;
+  text-align: center;
+  font-family: var(--roboto);
+  font-size: 18px;
+  border-radius: 8px;
+  ">
+  Tire print da tela e manda pra mim, obgg pela atenção &lt;3
+</div>
+</body>
+</html>

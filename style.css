@@ -1,0 +1,42 @@
+/* ... seu CSS existente ... */
+
+/* Estilo para a mensagem dinâmica ao lado de Resultado Final */
+.mensagem-final {
+    margin-top: 16px;
+    background-color: var(--fundo-senha);
+    border-left: 4px solid var(--borda);
+    padding: 16px;
+    font-size: 18px;
+    color: var(--branco);
+    font-family: var(--roboto);
+    max-width: 600px;
+    white-space: normal;
+  }
+  
+  /* Mantém o estilo dos botões e texto da pontuação */
+  .parametro-senha-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  
+  .parametro-senha__botao {
+    background-color: var(--cor-de-fundo);
+    color: var(--branco);
+    border: 2px solid var(--borda);
+    padding: 24px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .parametro-senha__texto {
+    border-top: 2px solid var(--borda);
+    border-bottom: 2px solid var(--borda);
+    padding: 24px;
+    margin: 0px;
+    font-size: 24px;
+    width: 80px;
+    text-align: center;
+  }
+  
